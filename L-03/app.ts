@@ -33,8 +33,8 @@ const user: User = {
     skills: ["all-pervading"]
 }
 
-function greet(user: User) {
+function greetUser(user: User) {
     console.log(`Hi, I am ${user.skills}`);
 }
 
-greet(user);
+greetUser(user);
