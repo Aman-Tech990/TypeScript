@@ -1,8 +1,10 @@
 // Union, Literal Types, Type Alias
 
-// LITERAL TYPES
+// Type Alias
 
-function combine(num1: number | string, num2: number | string, conversionType: "as-number" | "as-string") {
+type Combinable = number | string; // alias used
+
+function combine(num1: Combinable, num2: Combinable, conversionType: "as-number" | "as-string") {
     let result;
     if (typeof (num1) === 'number' && typeof (num2) === 'number' && conversionType === "as-number") {
         result = num1 + num2;
