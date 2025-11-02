@@ -18,3 +18,23 @@ const sum1 = combine(10, 20, "as-number"); // Used Literal Types
 const sum2 = combine(40, 70, "as-string"); // Used Literal Types
 const combineString = combine("Aman", " Parida", "as-string");
 console.log(sum1, sum2, combineString);
+
+
+// Type Alias Examples added
+type User = {
+    name: string,
+    age: number,
+    skills: string[]
+}
+
+const user: User = {
+    name: "Krishna",
+    age: 16,
+    skills: ["all-pervading"]
+}
+
+function greet(user: User) {
+    console.log(`Hi, I am ${user.skills}`);
+}
+
+greet(user);
