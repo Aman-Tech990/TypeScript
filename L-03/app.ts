@@ -1,10 +1,10 @@
 // Union, Literal Types, Type Alias
 
-// UNION
+// LITERAL TYPES
 
-function combine(num1: number | string, num2: number | string) {
+function combine(num1: number | string, num2: number | string, conversionType: "as-number" | "as-string") {
     let result;
-    if (typeof (num1) === 'number' && typeof (num2) === 'number') {
+    if (typeof (num1) === 'number' && typeof (num2) === 'number' && conversionType === "as-number") {
         result = num1 + num2;
     } else {
         result = num1.toString() + num2.toString();
@@ -12,6 +12,7 @@ function combine(num1: number | string, num2: number | string) {
     return result;
 }
 
-let sum = combine(10, 20);
-let combineString = combine("\tAman", " Parida");
-console.log(sum, combineString);
+const sum1 = combine(10, 20, "as-number"); // Used Literal Types
+const sum2 = combine(40, 70, "as-string"); // Used Literal Types
+const combineString = combine("Aman", " Parida", "as-string");
+console.log(sum1, sum2, combineString);
