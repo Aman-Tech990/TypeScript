@@ -1,74 +1,27 @@
-// Inheritance
+// Abstract Classes
 
-class Department {
-    name: string;
-    protected employees: string[];
-    constructor(private id: string, name: string) {
-        this.id = id; // Read only (After this, cannot be assigned)
+abstract class Department {
+    name: String;
+    protected employees: string[] = [];
+    protected readonly id: string;
+
+    constructor(id: string, name: string) {
+        this.id = id;
         this.name = name;
-        this.employees = [];
     }
-    describe() {
-        console.log(`Department : (${this.id}, ${this.name})`);
-    }
-    addEmployee(emp: string) {
-        this.employees.push(emp);
-    }
-    printEmployeeInfo() {
-        console.log("Number of employees: ", this.employees.length);
-        console.log(this.employees);
-    }
+
+    abstract describe(this: Department): void;
+    abstract displayName(): void;
 }
 
-// const accounting = new Department('Accounting');
-// accounting.describe();
-// accounting.addEmployee("Ram");
-// accounting.addEmployee("Hari");
-// accounting.printEmployeeInfo();
-
-class AccountingDepartment extends Department {
+class SubClass extends Department {
     constructor(id: string, private reports: string[]) {
-        super(id, "Accounting");
+        super(id, "Accouting");
     }
-    addReports(text: string) {
-        this.reports.push(text);
+    describe(): void {
+        console.log("Department: ", this.id);
     }
-    viewRepoorts() {
-        console.log("Total Reports : ", this.reports.length);
-        console.log(this.reports);
+    displayName(): void {
+        console.log(this.name);
     }
-
-    // Override Property
-    addEmployee(emp: string): void {
-        if (emp === "Aman") {
-            return;
-        }
-        this.employees.push(emp);
-    }
-
-    get getReports() {
-        if (this.reports.length > 0) {
-            return this.reports;
-        }
-        throw new Error("Reports not found!");
-    }
-
-    set setReports(value: string) {
-        if (!value) {
-            throw new Error("Please pass valid value");
-        }
-        this.reports.push(value);
-    }
-
 }
-
-const accDept = new AccountingDepartment("01", ["Data"]);
-accDept.addReports("First");
-accDept.addReports("Second");
-
-// Getter & Setter
-console.log(" Getter -> ", accDept.getReports);
-accDept.setReports = "Error is encountered";
-
-
- 
